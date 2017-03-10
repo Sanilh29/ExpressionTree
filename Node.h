@@ -9,6 +9,7 @@ class Node {
   char datac;//char data
   int datai;//int data
   Node* next;//next node pointer
+  int type;
  public://methods
   Node(char input);//constructor for char data
   Node(int input);//constructor for int data
@@ -17,6 +18,7 @@ class Node {
   Node* getNext();//gets the next node
   char getDatac();//gets char data
   int getDatai();//gets int data
+  int getType();
 };
 
 #endif

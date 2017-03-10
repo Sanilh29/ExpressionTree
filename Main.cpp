@@ -52,6 +52,22 @@ Stack* shuntingYard(char* input){//runs algorithm
   return outputStack;
 }
 
+void print(){
+  
+}
+
+void Postfix(){
+
+}
+
+void Prefix(){
+
+}
+
+void Infix(){
+
+}
+
 bool isOperator (char o){//check to see if its an operator (+ - * / ^)
   if (o == '+' || o == '-' || o == '*' || o == '/' || o == '^'){
     return true;

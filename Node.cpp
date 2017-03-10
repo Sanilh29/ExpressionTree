@@ -6,11 +6,13 @@ using namespace std;
 Node::Node(int input){//constructor
   datai = input;//set the int data as input
   next = NULL;
+  type = 1;
 }
 
 Node::Node(char input){//char constructor
   datac = input;//sets the char data to input
   next = NULL;
+  type = 2;
 }
 
 Node::~Node(){//deconstrctor by setting next to null
@@ -31,4 +33,8 @@ char Node::getDatac(){
 
 int Node::getDatai(){
   return datai;
+}
+
+int Node::getType(){
+  return type;
 }
