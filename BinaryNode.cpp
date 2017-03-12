@@ -1,5 +1,6 @@
 #include "BinaryNode.h"
 #include <cstring>
+#include <iostream>
 
 using namespace std;
 
@@ -51,10 +52,10 @@ void BinaryNode::setRight(BinaryNode* n){
 }
 
 void printData(){
-  if (type == 1){
-    cout << datai << endl;
-  }
   if (type == 2){
     cout << datac << endl;
+  }
+  if (type == 1){
+    cout << datai << endl;
   }
 }
