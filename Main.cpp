@@ -1,3 +1,5 @@
+//sanil Hattangadi, 3/14/17
+//the program takes an equation and creates it into a tree and translates it into infix, postfix, and prefix
 #include <cstring>
 #include "Node.h"
 #include "Stack.h"
@@ -14,28 +16,33 @@ void print(BinaryNode* n, int indent = 0);
 Stack* shuntingYard(char* input);
 BinaryNode* Tree(Stack* stack);
 
+//my main
 int main(){
-  char command[100];
+  char command[100];//initialized varialbe
   cout << "Welcome to the translator. We can put an equation into Infix, Postfix, or Prefix Notation." << endl;
   bool running = true;
-  while (running == true){
+  while (running == true){//while playing
     cout << "Enter a command: translate or quit." << endl;
     cin.get(command, 100);
     cin.ignore();
-    if (0 == strcmp(command, "quit")){
+    if (0 == strcmp(command, "quit")){//if quit is inputted, stop program
       running = false;
     }
-    if (0 == strcmp(command, "translate")){
+    if (0 == strcmp(command, "translate")){//if translated in iputted
       char input[100];
-      cout << "Enter an equation please." <<endl;
+      cout << "Enter an equation please." <<endl;//get an equation
       cin.get(input, 100);
       cin.ignore();
       Stack* stack = shuntingYard(input);
-      BinaryNode* head = Tree(stack);
-      cout << "Tree:" << endl;
-      print(head);
+      BinaryNode* head = Tree(stack);//make tree
+      cout << "Tree:" << endl;//
+      print(head);//print it out
       cout << "Postfix:" << endl;
-      Postfix(head);
+      Postfix(head);//print postfix
+      cout << "Prefix:"  <<  endl;
+      Prefix(head);//print prefix
+      cout << "Infix:" << endl;
+      Infix(head);//print infix
     }
   }
 }
@@ -80,12 +87,13 @@ Stack* shuntingYard(char* input){//runs algorithm
   return outputStack;
 }
 
+//actually print out the tree
 void print(BinaryNode* n, int indent){
-  if (n->getLeft()){
-    print(getLeft(), indent+1);
-    for (int i =0;i<=indent; i++){
-      cout << "  ";
-    } 
+  if (n->getLeft()){//get the left
+    print(n->getLeft(), indent+1);//indent it
+  }
+  for (int i =0;i<=indent; i++){ //prints out the space
+    cout << "  "; 
   }
   n->printData();
   cout << endl;
@@ -94,25 +102,27 @@ void print(BinaryNode* n, int indent){
   }
 }
 
+//prints postfix: left, parent, right
 void Postfix(BinaryNode* n){
-  if (n->getType() == 2){
-    Postfix(n->getLeft());
-    Postfix(n->getRight());
+  if (n->getType() == 2){//if char
+    Postfix(n->getLeft());//get left
+    Postfix(n->getRight());//get right
   }
   n->printData();
 }
 
+//prints prefix: symbol, left and hen right
 void Prefix(BinaryNode* n){
-  n->printData();
-  if (n->getType() == 2){
-    Prefix(n->getLeft());
-    Prefix(n->getRight());
+  n->printData();//prints symbols
+  if (n->getType() == 2){//if a char
+    Prefix(n->getLeft());//get left
+    Prefix(n->getRight());//get right
   }
 }
-
+//translates it into infix: prints left, right, parent
 void Infix(BinaryNode* n){
-  if (n->getType() ==2){
-    Infix(n->getLeft());
+  if (n->getType() ==2){//if its a char
+    Infix(n->getLeft());//recursive on itself
     n->printData();
     Infix(n->getRight());
   }
@@ -121,14 +131,15 @@ void Infix(BinaryNode* n){
   }
 }
 
-BinaryNode* Tree(Stack* stack){
+//takes the values from the stack and makes it into a tree
+BinaryNode* Tree(Stack* stack){//
   BinaryNode* b;
-  if (stack->peek()->getType() == 2){
-    b = new BinaryNode(stack->pop()->getDatac());
-    b->setLeft(Tree(stack));
+  if (stack->peek()->getType() == 2){//look if the top value is a char
+    b = new BinaryNode(stack->pop()->getDatac());//create a new binary node
+    b->setLeft(Tree(stack));//sets them to the left
     b->setRight(Tree(stack));
   }
-  else {
+  else {//if its a number, create a branch
     b = new BinaryNode (stack->pop()->getDatai());
   }
   return b;

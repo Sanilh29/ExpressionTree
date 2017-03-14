@@ -1,3 +1,5 @@
+//Sanil Hattangadi, 3/141/7
+//stack methods and creates methods with algorithms
 #include <cstring>
 #include "Stack.h"
 
