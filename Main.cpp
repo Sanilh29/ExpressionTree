@@ -105,8 +105,8 @@ void print(BinaryNode* n, int indent){
 //prints postfix: left, parent, right
 void Postfix(BinaryNode* n){
   if (n->getType() == 2){//if char
-    Postfix(n->getLeft());//get left
-    Postfix(n->getRight());//get right
+    Postfix(n->getRight());//get left
+    Postfix(n->getLeft());//get right
   }
   n->printData();
 }
@@ -115,16 +115,16 @@ void Postfix(BinaryNode* n){
 void Prefix(BinaryNode* n){
   n->printData();//prints symbols
   if (n->getType() == 2){//if a char
-    Prefix(n->getLeft());//get left
-    Prefix(n->getRight());//get right
+    Prefix(n->getRight());//get left
+    Prefix(n->getLeft());//get right
   }
 }
 //translates it into infix: prints left, right, parent
 void Infix(BinaryNode* n){
   if (n->getType() ==2){//if its a char
-    Infix(n->getLeft());//recursive on itself
+    Infix(n->getRight());//recursive on itself
     n->printData();
-    Infix(n->getRight());
+    Infix(n->getLeft());
   }
   else{
     n->printData();
