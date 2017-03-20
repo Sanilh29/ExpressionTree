@@ -89,16 +89,16 @@ Stack* shuntingYard(char* input){//runs algorithm
 
 //actually print out the tree
 void print(BinaryNode* n, int indent){
-  if (n->getLeft()){//get the left
-    print(n->getLeft(), indent+1);//indent it
+  if (n->getRight()){//get the left
+    print(n->getRight(), indent+1);//indent it
   }
   for (int i =0;i<=indent; i++){ //prints out the space
     cout << "  "; 
   }
   n->printData();
   cout << endl;
-  if (n->getRight()){
-    print(n->getRight(), indent+1);
+  if (n->getLeft()){
+    print(n->getLeft(), indent+1);
   }
 }
 
