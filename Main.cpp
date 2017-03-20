@@ -37,12 +37,16 @@ int main(){
       BinaryNode* head = Tree(stack);//make tree
       cout << "Tree:" << endl;//
       print(head);//print it out
+      cout << endl;
       cout << "Postfix:" << endl;
       Postfix(head);//print postfix
+      cout << endl;
       cout << "Prefix:"  <<  endl;
       Prefix(head);//print prefix
+      cout << endl;
       cout << "Infix:" << endl;
       Infix(head);//print infix
+      cout << endl;
     }
   }
 }

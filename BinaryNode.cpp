@@ -62,9 +62,9 @@ void BinaryNode::setRight(BinaryNode* n){
 //prints the data 
 void BinaryNode::printData(){
   if (type == 2){
-    cout << datac << endl;
+    cout << datac << " ";
   }
   if (type == 1){
-    cout << datai << endl;
+    cout << datai<< " ";
   }
 }
